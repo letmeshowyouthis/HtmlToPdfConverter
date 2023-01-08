@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  htmltopdfconverter.web:
+    container_name: web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:5000;http://+:4000
+      - RedisConnectionString=redis:6379
+      - MSSQLConnectionString=Server=mssql;Database=converter;User Id=sa;Password=Pass@word;
+    ports:
+      - "5000:5000"
+      - "4000:4000"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  redis:
+    container_name: redis
+
+    ports:
+      - "6379:6379"
+    volumes:
+      - ~/.redis/data:/data
+
+  mssql:
+    container_name: mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=Pass@word
+      - MSSQL_DB=converter
+      - MSSQL_USER=me
+      - MSSQL_PASSWORD=Pass@word
+    ports:
+      - "5433:1433"
+    volumes:
+      - ~/.sqlserver:/var/opt/mssql/data

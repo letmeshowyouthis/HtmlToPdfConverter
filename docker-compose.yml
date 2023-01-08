@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+
+  htmltopdfconverter.web:
+    image: ${DOCKER_REGISTRY-}htmltopdfconverterweb
+    build:
+      context: .
+      dockerfile: HtmlToPdfConverter.WEB/Dockerfile
+    depends_on:
+      - redis
+      - mssql
+
+  redis:
+    image: redis:7.0.5-alpine
+
+  mssql:
+    image: mcmoe/mssqldocker:v2017.CU24.0

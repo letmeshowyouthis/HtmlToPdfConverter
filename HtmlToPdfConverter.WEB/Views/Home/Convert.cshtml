@@ -1,0 +1,12 @@
+﻿@page
+
+<h1>HTML to PDF converter</h1>
+
+<br/>
+
+<form method="post" enctype="multipart/form-data">
+    <span>Select File:</span>
+    <input type="file" name="file" accept="text/html" />
+    <input type="submit" value="Upload" asp-page-handler="Convert" />
+    <br/>
+</form>

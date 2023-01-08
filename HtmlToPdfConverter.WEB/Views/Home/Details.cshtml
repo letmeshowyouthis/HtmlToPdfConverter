@@ -1,0 +1,55 @@
+﻿@model Guid
+@{
+}
+
+<h1>Conversion # @Model.ToString()</h1>
+
+<br/>
+
+<div id="loadingSpinner" class="spinner-border" role="status">
+    <span class="sr-only"></span>
+</div>
+<a id="downloadBtn" href="@Url.Action("Download", new { sessionId = Model})" style="display:none">Download!</a>
+
+<div class="alert-danger" id="errorDiv" style="display:none">
+    <span id="errorMessage"></span>
+</div>
+
+<br />
+<br />
+<a href="@Url.Action("Convert")">Go back!</a>
+
+@section Scripts {
+<script>
+    @{
+        var uri = Url.Action("GetStatus", new { sessionId = Model });
+    }
+
+    var interval = null;
+    $(document).ready(function() {
+        getStatus();
+
+        var seconds = 4;
+        interval = setInterval(getStatus, seconds * 1000);
+    });
+
+    function getStatus() {
+        $.get("@uri")
+            .done(function(data) {
+                if (data.success == true) {
+                    if (data.data.isDone == true) {
+                        $("#loadingSpinner").hide();
+                        $("#downloadBtn").show();
+
+                        clearInterval(interval);
+                    }
+                } else {
+                    $("#loadingSpinner").hide();
+
+                    $("#errorDiv").show();
+                    $("#errorMessage").text(data.errorMessage);
+                }
+            });
+    }
+</script>
+}
