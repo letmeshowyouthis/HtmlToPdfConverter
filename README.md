@@ -21,7 +21,7 @@ I didn't spend too much time on the web client (it's a simple HTML page with lit
 **Why use sagas?**  
 Conversion to PDF must be done as transaction and since we make calls to mutliple external independent services, saga pattern allows us to achieve transactional consistency.
 
-**Why MnIO for storing files?**  
+**Why MinIO for storing files?**  
 By using MinIO we don't have to have a local file storage, we store files in the cloud. MinIO is made and optimized for storing unstructured data (our case). Also it supports Kubernetes and AWS S3 so we can potentially increase application's scalability further more.
 
 **Why Redis for storing sessions in DB?**  
