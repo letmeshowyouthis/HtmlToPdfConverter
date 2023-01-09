@@ -18,7 +18,7 @@ I didn't spend too much time on the web client (it's a simple HTML page with lit
 ![arhcitecture](https://user-images.githubusercontent.com/122230590/211382169-771d649e-4167-4d34-95ac-f92a66f36a14.jpg)
 
 ## ADR
-**Why use sagas?  **
+**Why use sagas?**  
 Conversion to PDF must be done as transaction and since we make calls to mutliple external independent services, saga pattern allows us to achieve transactional consistency.
 
 **Why MnIO for storing files?**  
