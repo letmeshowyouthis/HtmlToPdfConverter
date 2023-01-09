@@ -11,7 +11,7 @@ I didn't spend too much time on the web client (it's a simple HTML page with lit
 - Puppeteer Sharp
 
 ## How to start
-1) Have Docker desktop running.
+1) Have Docker Desktop running.
 2) (Optionally) specify MinIO server credentials in appsettings.json "MinIO" section. By default it's set to "play.min.io".
 
 ## Architecture
