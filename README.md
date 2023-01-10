@@ -7,6 +7,7 @@ I didn't spend too much time on the web client (it's a simple HTML page with lit
 - Docker
 - Redis
 - MinIO
+- Hangfire
 - RazorPages + JQuery
 - Puppeteer Sharp
 
